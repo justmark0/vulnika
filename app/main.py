@@ -10,11 +10,19 @@ def index():
     return render_template('main.html')
 
 
-@app.route("/static/<name>", methods=["GET"])
-def static_files(name):
-    os.system(f'echo \'user requested {name}\' >> log.txt')
-    with open(f'/app/files/{name}') as f:
-        return send_from_directory(app.config["CLIENT_IMAGES"], filename=name, as_attachment=True, path=f'/app/files/{name}')
+@app.route("/static", methods=["GET"])
+def static_files():
+    src = request.args.get("src")
+    return send_file(f'/app/files/{src}', as_attachment=True)
+
+
+@app.route("/feedback", methods=["POST"])
+def feedback():
+    if request.method == 'POST':
+        data = request.get_json()
+        feedback = data.get('feedback')
+        os.system(f'echo \'user feedback: {feedback}\' >> feedback.txt')
+    return 'ok'
 
 
 if __name__ == "__main__":
