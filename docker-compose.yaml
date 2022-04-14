@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  vulnika:
+    build: .
+    ports:
+      - '8089:9998'
