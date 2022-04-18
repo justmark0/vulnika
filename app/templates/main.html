@@ -20,9 +20,20 @@
     </div>
     <!-- feedback section -->
     <h1>Feedback about us</h1>
-    <form action="action_save_feedback" method = "POST">
-      <p>Write your feedback <input type = "text" name = "feedback" /></p>
-      <p><input type = "submit" value = "Send" /></p>
+    <form action="/" method="POST">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p>Write your feedback</p>
+          </div>
+          <div class="col">
+            <input type="text" name="feedback"/>
+          </div>
+          <div class="col">
+            <input type="submit" value="Send"/>
+          </div>
+        </div>
+      </div>
     </form>
     <div>
       {% if feed_mess %}

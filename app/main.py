@@ -14,7 +14,7 @@ def index():
             message = file.read()
 
     if request.method == 'POST':
-        message = request.form['feedback'].text()
+        message = request.form['feedback']
         with open("feedback.txt", "w") as file:
             file.write(message)
 
